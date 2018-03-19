@@ -1,0 +1,37 @@
+{% set version = "0.11.0" %}
+
+package:
+  name: javalang
+  version: {{ version }}
+
+source:
+  path: ..
+
+build:
+  number: 0
+  script: python setup.py install
+
+requirements:
+  build:
+    - setuptools
+  run:
+    - python
+    - six
+
+test:
+  imports:
+    - openalea.core
+  requires:
+    - nose
+  source_files:
+    - test/
+    - test/*.py
+
+  commands:
+    - nosetests -v
+
+about:
+  home: http://github.com/c2nes/javalang
+  license: MIT License
+  summary: Pure Python Java parser and tools.
+
